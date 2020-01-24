@@ -81,7 +81,15 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 TARGET_SCREEN_WIDTH ?= 1080
 TARGET_SCREEN_HEIGHT ?= 1920
 
-# Config
+ifeq ($(USE_PIXEL_CHARGER),true)
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    product_charger_res_images \
+    product_charger_res_images_vendor
+endif
+
+#config
 PRODUCT_PACKAGES += \
     SimpleDeviceConfig
 
