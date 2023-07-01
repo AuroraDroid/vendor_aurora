@@ -33,6 +33,8 @@ SOONG_CONFIG_auroraGlobalVars += \
     bootloader_message_offset \
     camera_override_format_from_reserved \
     gralloc_handle_has_custom_content_md_reserved_size \
+    camera_needs_miui_camera_mode_support \
+    camera_needs_camera_needs_depth_sensor_override \
     gralloc_handle_has_reserved_size \
     gralloc_handle_has_ubwcp_format \
     target_health_charging_control_charging_path \
@@ -81,6 +83,9 @@ SOONG_CONFIG_auroraNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK
 SOONG_CONFIG_auroraQcomVars_qti_vibrator_use_effect_stream := $(TARGET_QTI_VIBRATOR_USE_EFFECT_STREAM)
 SOONG_CONFIG_auroraQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
 SOONG_CONFIG_auroraQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
+SOONG_CONFIG_auroraGlobalVars_camera_needs_miui_camera_mode_support := $(TARGET_USES_MIUI_CAMERA)
+SOONG_CONFIG_auroraGlobalVars_camera_needs_camera_needs_depth_sensor_override := $(TARGET_USES_DEPTHSENSOR_OVERRIDE)
+SOONG_CONFIG_auroraGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
