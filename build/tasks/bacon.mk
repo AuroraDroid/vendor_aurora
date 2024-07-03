@@ -14,14 +14,20 @@
 # limitations under the License.
 
 # -----------------------------------------------------------------
-# Lineage OTA update package
+# AURORA OTA update package
 
-LINEAGE_TARGET_PACKAGE := $(PRODUCT_OUT)/lineage-$(LINEAGE_VERSION).zip
+AURORA_TARGET_PACKAGE := $(PRODUCT_OUT)/AuroraDroid-$(AURORA_VERSION).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
 .PHONY: bacon
-bacon: $(DEFAULT_GOAL) $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LINEAGE_TARGET_PACKAGE)
-	$(hide) $(SHA256) $(LINEAGE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(LINEAGE_TARGET_PACKAGE).sha256sum
-	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
+bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(AURORA_TARGET_PACKAGE)
+	$(hide) $(SHA256) $(AURORA_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(AURORA_TARGET_PACKAGE).sha256sum
+	echo -e ${CL_BLD}${CL_RED}"===============================-Package complete-==============================="${CL_RED}
+	echo -e ${CL_BLD}${CL_GRN}"Zip: "${CL_RED} $(AURORA_TARGET_PACKAGE)${CL_RST}
+	echo -e ${CL_BLD}${CL_GRN}"SHA256: "${CL_RED}" `cat $(AURORA_TARGET_PACKAGE).sha256sum | awk '{print $$1}' `"${CL_RST}
+	echo -e ${CL_BLD}${CL_GRN}"Size:"${CL_RED}" `du -sh $(AURORA_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_RST}
+	echo -e ${CL_BLD}${CL_GRN}"TimeStamp:"${CL_RED}" `cat $(PRODUCT_OUT)/system/build.prop | grep ro.AURORA.build.date | cut -d'=' -f2 | awk '{print $$1}' `"${CL_RST}
+	echo -e ${CL_BLD}${CL_GRN}"Integer Value:"${CL_RED}" `wc -c $(AURORA_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_RST}
+	echo -e ${CL_BLD}${CL_RED}"================================================================================"${CL_RED}
