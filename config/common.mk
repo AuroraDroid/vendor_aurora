@@ -189,3 +189,4 @@ CUSTOM_LOCALES += \
 include vendor/aurora/config/version.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
+include vendor/aurora/config/packages.mk
