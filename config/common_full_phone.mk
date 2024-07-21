@@ -1,5 +1,5 @@
 # Inherit full common Aurora stuff
-$(call inherit-product, vendor/aurora/config/common_full.mk)
+$(call inherit-product, vendor/aurora/config/common_mobile_full.mk)
 
 #Enable support of one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
