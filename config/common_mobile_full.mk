@@ -12,3 +12,13 @@ endif
 PRODUCT_PACKAGES += \
     unrar \
     zstd
+
+# Fonts
+PRODUCT_PACKAGES += \
+    fonts_customization.xml \
+    FontLatoOverlay \
+    FontRubikOverlay
+
+# Include Blaze LatinIME dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/aurora/overlay/dictionaries
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/aurora/overlay/dictionaries

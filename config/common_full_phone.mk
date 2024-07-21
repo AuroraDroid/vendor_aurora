@@ -1,7 +1,7 @@
 # Inherit full common Aurora stuff
 $(call inherit-product, vendor/aurora/config/common_mobile_full.mk)
 
-#Enable support of one-handed mode
+# Enable support of one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode?=true
 
