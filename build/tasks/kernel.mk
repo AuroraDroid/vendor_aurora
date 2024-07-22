@@ -378,6 +378,17 @@ define build-image-kernel-modules-aurora
             echo "ERROR: $$NAME.ko was not found in the kernel modules intermediates dir, module load list must be corrected" 1>&2 && exit 1; \
         fi; \
     done
+    if [ ! -z "$(7)" ]; then \
+        echo lib/modules$(6)/modules.alias >> "$(7)"; \
+        echo lib/modules$(6)/modules.dep >> "$(7)"; \
+        if [ ! -z "$(5)" ]; then echo lib/modules$(6)/modules.load >> "$(7)"; fi; \
+        echo lib/modules$(6)/modules.softdep >> "$(7)"; \
+        for MODULE in $(1); do \
+            BASENAME=$$(basename $$MODULE); \
+            echo lib/modules$(6)/"$$BASENAME" >> "$(7)"; \
+        done; \
+        sort -u "$(7)" -o "$(7)"; \
+    fi;
 endef
 
 endif # FULL_RECOVERY_KERNEL_BUILD or FULL_KERNEL_BUILD
