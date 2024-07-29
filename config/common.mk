@@ -81,6 +81,9 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 TARGET_SCREEN_WIDTH ?= 1080
 TARGET_SCREEN_HEIGHT ?= 1920
 
+# Certification
+$(call inherit-product-if-exists, vendor/certification/config.mk)
+
 ifeq ($(USE_PIXEL_CHARGER),true)
 # Charger
 PRODUCT_PACKAGES += \
