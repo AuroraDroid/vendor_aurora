@@ -54,6 +54,9 @@
     </string-array>
 
     <!-- The list of components which should be automatically disabled for all devices. -->
+    <bool name="config_cellBroadcastAppLinks">true</bool>
+
+    <!-- Disable stock OTA components if installed -->
     <string-array name="config_globallyDisabledComponents" translatable="false">
         <!-- Disable stock OTA components if installed -->
         <item>com.android.vending/com.google.android.finsky.systemupdate.SystemUpdateSettingsContentProvider</item>
