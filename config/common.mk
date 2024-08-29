@@ -154,6 +154,11 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/procmem
 endif
 
+# Themepicker
+PRODUCT_PACKAGES += \
+    ThemePicker \
+    ThemesStub
+
 # Root
 PRODUCT_PACKAGES += \
     adb_root
