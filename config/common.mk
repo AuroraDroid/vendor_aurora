@@ -124,6 +124,11 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/%/libfuse-lite.so \
     system/%/libntfs-3g.so
 
+# GMS
+ifeq ($(WITH_GMS), true)
+    $(call inherit-product, vendor/gms/common/common-vendor.mk)
+endif
+
 # Openssh
 PRODUCT_PACKAGES += \
     scp \
