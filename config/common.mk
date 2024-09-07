@@ -199,6 +199,11 @@ CUSTOM_LOCALES += \
     cy_GB \
     fur_IT
 
+
+# Apps
+PRODUCT_PACKAGES += \
+   Gamespace \
+
 include vendor/aurora/config/version.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
