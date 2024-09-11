@@ -71,23 +71,11 @@ def add_auth(g_req):
     if github_auth:
         g_req.add_header("Authorization", "Basic %s" % github_auth)
 
-
-def indent(elem, level=0):
-    # in-place prettyprint formatter
-    i = "\n" + "  " * level
-    if len(elem):
-        if not elem.text or not elem.text.strip():
-            elem.text = i + "  "
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-        for elem in elem:
-            indent(elem, level+1)
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-    else:
-        if level and (not elem.tail or not elem.tail.strip()):
-            elem.tail = i
-
+def get_manifest_path():
+    '''Find the current manifest path
+    In old versions of repo this is at .repo/manifest.xml
+    In new versions, .repo/manifest.xml includes an include
+    to some arbitrary file in .repo/manifests'''
 
 def load_manifest(manifest):
     try:
@@ -219,9 +207,9 @@ def add_to_manifest(repos, fallback_branch=None):
                 os.rmdir(repo_path)
         lm.append(project)
 
-    indent(lm)
-    raw_xml = "\n".join(('<?xml version="1.0" encoding="UTF-8"?>',
-                         ElementTree.tostring(lm).decode()))
+    ElementTree.indent(lm)
+    raw_xml = ElementTree.tostring(lm).decode()
+    raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
 
     f = open(custom_local_manifest, 'w')
     f.write(raw_xml)
