@@ -208,12 +208,8 @@ def add_to_manifest(repos, fallback_branch=None):
         lm.append(project)
 
     ElementTree.indent(lm)
-    raw_xml = ElementTree.tostring(lm).decode()
-    raw_xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + raw_xml
-
-    f = open(custom_local_manifest, 'w')
-    f.write(raw_xml)
-    f.close()
+    tree = ElementTree.ElementTree(lm)
+    tree.write('.repo/local_manifests/roomservice.xml', encoding='UTF-8', xml_declaration=True)
 
 _fetch_dep_cache = []
 
