@@ -54,6 +54,9 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/aurora/prebuilt/common/etc/init/init.aurora-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.aurora-system_ext.rc
 
+# Bootanimation
+$(call inherit-product, vendor/aurora/config/bootanimation.mk)
+
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.sip.voip.xml
