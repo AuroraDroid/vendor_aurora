@@ -130,6 +130,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     build-manifest
 
+# Themepicker
+PRODUCT_PACKAGES += \
+    ThemePicker \
+    ThemesStub
+
 # Lineage packages
 ifeq ($(PRODUCT_IS_ATV),)
 PRODUCT_PACKAGES += \
