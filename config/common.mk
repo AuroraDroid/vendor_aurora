@@ -190,6 +190,11 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/bin/wipe-frp.sh:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/wipe-frp
 
+# GAPPS
+ifeq ($(WITH_GMS),true)
+$(call inherit-product-if-exists, vendor/gapps/common/common-vendor.mk)
+endif
+
 # Openssh
 PRODUCT_PACKAGES += \
     scp \
