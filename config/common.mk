@@ -67,6 +67,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 endif
 
+# Bootanimation
+$(call inherit-product, vendor/lineage/config/bootanimation.mk)
+
 # Lineage-specific broadcast actions whitelist
 PRODUCT_COPY_FILES += \
     vendor/lineage/config/permissions/lineage-sysconfig.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/lineage-sysconfig.xml
